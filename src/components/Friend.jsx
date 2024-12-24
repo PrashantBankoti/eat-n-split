@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-function Friend({ friend }) {
+function Friend({ friend, onSelectFriend }) {
   let currbalance = friend.balance;
   return (
     <>
@@ -18,7 +18,7 @@ function Friend({ friend }) {
             ? `${friend.name} owes you ${currbalance}$`
             : `You and ${friend.name} are even`}
         </p>
-        <Button>Select</Button>
+        <Button onClick={() => onSelectFriend(friend)}>Select</Button>
       </li>
     </>
   );
