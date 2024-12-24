@@ -1,11 +1,14 @@
 import Friend from "./Friend";
-import { initialFriends } from "../App";
-function FriendList({ onShowSplitBill, showSplitBill, onIndex }) {
-  const friends = initialFriends;
+
+function FriendList({ friends, onNewFriendList }) {
   return (
     <ul>
       {friends.map((friend, index) => (
-        <Friend friend={friend} key={friend.id} />
+        <Friend
+          friend={friend}
+          key={friend.id}
+          onNewFriendList={onNewFriendList}
+        />
       ))}
     </ul>
   );
