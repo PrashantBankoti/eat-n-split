@@ -1,10 +1,14 @@
 import Button from "./Button";
 
-function Friend({ friend, onSelectFriend }) {
+function Friend({ friend, onSelectFriend, selectedFriend }) {
   let currbalance = friend.balance;
+  const isSelected = selectedFriend?.id === friend.id;
+  function handleClick() {
+    onSelectFriend(friend);
+  }
   return (
     <>
-      <li>
+      <li className={isSelected ? "selected" : ""}>
         <img src={friend.image} alt={friend.image} />
         <h3>{friend.name}</h3>
         <p
@@ -18,7 +22,9 @@ function Friend({ friend, onSelectFriend }) {
             ? `${friend.name} owes you ${currbalance}$`
             : `You and ${friend.name} are even`}
         </p>
-        <Button onClick={() => onSelectFriend(friend)}>Select</Button>
+        <Button onClick={() => handleClick()}>
+          {isSelected ? "Close" : "Select"}
+        </Button>
       </li>
     </>
   );
